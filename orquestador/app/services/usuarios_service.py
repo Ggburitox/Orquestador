@@ -1,19 +1,8 @@
-import httpx
+import requests
+USUARIOS_URL = "http://usuarios:3000"
 
-USUARIOS_SERVICE_URL = "http://servicio-usuarios:8001"
+def login(request):
+    return requests.post(f"{USUARIOS_URL}/login", json=request.json()).json()
 
-async def registrar_usuario(usuario):
-    async with httpx.AsyncClient() as client:
-        response = await client.post(
-            f"{USUARIOS_SERVICE_URL}/servicio-usuarios",
-            json=usuario.dict()
-        )
-        return response.json()
-
-async def login(credenciales):
-    async with httpx.AsyncClient() as client:
-        response = await client.post(
-            f"{USUARIOS_SERVICE_URL}/login",
-            json=credenciales.dict()
-        )
-        return response.json()
+def registrar(request):
+    return requests.post(f"{USUARIOS_URL}/registrar", json=request.json()).json()
