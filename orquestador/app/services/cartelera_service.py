@@ -1,4 +1,5 @@
 import requests
+
 CARTELERA_URL = "http://cartelera:8080"
 
 def obtener_cartelera():

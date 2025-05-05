@@ -1,8 +1,11 @@
 import requests
+
 USUARIOS_URL = "http://usuarios:3000"
 
-def login(request):
-    return requests.post(f"{USUARIOS_URL}/login", json=request.json()).json()
+async def login(login_data):
+    response = requests.post(f"{USUARIOS_URL}/login", json=login_data.dict())
+    return response.json()
 
-def registrar(request):
-    return requests.post(f"{USUARIOS_URL}/registrar", json=request.json()).json()
+async def registrar(register_data):
+    response = requests.post(f"{USUARIOS_URL}/registrar", json=register_data.dict())
+    return response.json()
