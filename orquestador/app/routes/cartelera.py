@@ -7,4 +7,4 @@ router = APIRouter()
 
 @router.get("/cartelera", response_model=List[PeliculaResponse])
 def obtener_cartelera():
-    return cartelera_service.obtener_cartelera(
+    return cartelera_service.obtener_cartelera()

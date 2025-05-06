@@ -1,15 +1,15 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr, Field
 
-class LoginRequest(BaseModel):
-    email: str
+class LoginSchema(BaseModel):
+    email: EmailStr
     password: str
 
-class RegisterRequest(BaseModel):
-    nombre: str
-    email: str
-    password: str
+class RegisterSchema(BaseModel):
+    username: str = Field(..., min_length=3)
+    email: EmailStr
+    password: str = Field(..., min_length=6)
+    dni: str = Field(..., min_length=8, max_length=8)
 
-class UsuarioResponse(BaseModel):
-    id: int
-    nombre: str
-    email: str
+class UpdateSchema(BaseModel):
+    username: str = Field(..., min_length=3)
+    email: EmailStr
