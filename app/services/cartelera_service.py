@@ -1,7 +1,7 @@
 import httpx
 from app.schemas.cartelera_schemas import PeliculaCreate
 
-CARTELERA_URL = "http://localhost:8001/peliculas"
+CARTELERA_URL = "http://localhost:8002/peliculas"
 
 async def crear_pelicula(pelicula: PeliculaCreate):
     async with httpx.AsyncClient() as client:
