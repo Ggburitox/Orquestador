@@ -1,0 +1,6 @@
+fastapi[all]
+httpx
+pydantic[email]
+mysql-connector-python
+email-validator
+uvicorn

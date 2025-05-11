@@ -1,10 +1,18 @@
 from fastapi import APIRouter
-from services import cartelera_service
-from schemas.cartelera import PeliculaResponse
 from typing import List
+from app.services.cartelera_service import crear_pelicula, listar_peliculas, obtener_pelicula
+from app.schemas.cartelera_schemas import PeliculaCreate, Pelicula
 
-router = APIRouter()
+router = APIRouter(tags=["Cartelera"])
 
-@router.get("/cartelera", response_model=List[PeliculaResponse])
-def obtener_cartelera():
-    return cartelera_service.obtener_cartelera()
+@router.post("/peliculas", response_model=Pelicula)
+async def crear_pelicula_route(pelicula: PeliculaCreate):
+    return await crear_pelicula(pelicula)
+
+@router.get("/peliculas", response_model=List[Pelicula])
+async def listar_peliculas_route():
+    return await listar_peliculas()
+
+@router.get("/peliculas/{id}", response_model=Pelicula)
+async def obtener_pelicula_route(id: int):
+    return await obtener_pelicula(id)

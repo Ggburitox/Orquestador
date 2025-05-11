@@ -1,14 +1,26 @@
 from fastapi import APIRouter
-from schemas.reservas import ReservaRequest, ReservaResponse
-from services import reservas_service
 from typing import List
+from app.services.reservas_service import crear_reserva, listar_reservas, reservas_por_usuario, reservas_por_pelicula, eliminar_reserva
+from app.schemas.reservas_schemas import Reserva, ReservaCreate
 
-router = APIRouter()
+router = APIRouter(tags=["Reservas"])
 
-@router.post("/reservar", response_model=ReservaResponse)
-async def reservar(reserva_data: ReservaRequest):
-    return await reservas_service.reservar(reserva_data)
+@router.get("/all", response_model=List[Reserva])
+async def listar_reservas_route():
+    return await listar_reservas()
 
-@router.get("/reservas/{user_id}", response_model=List[ReservaResponse])
-def obtener_reservas(user_id: int):
-    return reservas_service.obtener_reservas(user_id)
+@router.get("/usuario/{id}", response_model=List[Reserva])
+async def reservas_usuario_route(id: int):
+    return await reservas_por_usuario(id)
+
+@router.get("/pelicula/{id}", response_model=List[Reserva])
+async def reservas_pelicula_route(id: int):
+    return await reservas_por_pelicula(id)
+
+@router.post("/", response_model=Reserva)
+async def crear_reserva_route(reserva: ReservaCreate):
+    return await crear_reserva(reserva)
+
+@router.delete("/reserva/{id}")
+async def eliminar_reserva_route(id: str):
+    return await eliminar_reserva(id)

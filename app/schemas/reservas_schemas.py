@@ -1,13 +1,19 @@
 from pydantic import BaseModel
+from typing import Optional
+from datetime import date
 
-class ReservaRequest(BaseModel):
-    user_id: int
-    funcion_id: int
-    cantidad_boletos: int
+class ReservaBase(BaseModel):
+    usuario: Optional[str]
+    fecha: date
+    pelicula_nombre: str
+    peliculaId: int
+    usuarioId: int
 
-class ReservaResponse(BaseModel):
-    id: int
-    user_id: int
-    funcion_id: int
-    cantidad_boletos: int
-    estado: str
+class ReservaCreate(ReservaBase):
+    pass
+
+class Reserva(ReservaBase):
+    id: str
+
+    class Config:
+        from_attributes = True
