@@ -1,7 +1,7 @@
 import httpx
 from app.schemas.reservas_schemas import ReservaCreate
 
-RESERVAS_URL = "http://localhost:8081/reservas"
+RESERVAS_URL = "http://54.166.101.85:8081/reservas"
 
 async def listar_reservas():
     async with httpx.AsyncClient() as client:
