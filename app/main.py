@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import cartelera, usuarios, reservas
+from app.routes import cartelera, usuarios, reservas
 
 app = FastAPI(
     title="API de Microservicios",
