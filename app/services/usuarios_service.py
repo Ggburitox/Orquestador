@@ -1,7 +1,7 @@
 import httpx
 from app.schemas.usuarios_schemas import UsuarioCreate, UsuarioLogin, UsuarioUpdate
 
-USUARIOS_URL = "http://{ip}:8001/usuarios"
+USUARIOS_URL = "http://54.166.101.85:8001/usuarios"
 
 async def registrar_usuario(usuario: UsuarioCreate):
     async with httpx.AsyncClient() as client:
