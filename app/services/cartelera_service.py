@@ -1,7 +1,5 @@
-from fastapi import APIRouter
-from typing import List
-from app.service.cartelera_service import crear_pelicula, listar_peliculas, obtener_pelicula
-from app.schemas.cartelera_schemas import PeliculaCreate, Pelicula
+import httpx
+from app.schemas.cartelera_schemas import PeliculaCreate
 
 CARTELERA_URL = "http://localhost:8002/peliculas"
 
