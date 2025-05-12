@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from typing import List
-from app.services.cartelera_service import crear_pelicula, listar_peliculas, obtener_pelicula
+from app.service.cartelera_service import crear_pelicula, listar_peliculas, obtener_pelicula
 from app.schemas.cartelera_schemas import PeliculaCreate, Pelicula
 
 router = APIRouter(tags=["Cartelera"])
