@@ -20,7 +20,6 @@ class Usuario(BaseModel):
     id: int
     username: str
     email: EmailStr
-    dni: str
 
     class Config:
         from_attributes = True
